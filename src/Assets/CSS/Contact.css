@@ -1,0 +1,99 @@
+
+#Contact {
+    width: 95%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    background-color: #f7fafc;
+    border: 2px solid #f7fafc;
+    color: #1D3A4D;
+    border-radius: 10px;
+    margin-top: 20px;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+
+}
+
+
+
+.person {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #1D3A4D ;
+    margin-top: 15px;
+    margin-left: 5%;
+    font-family: Comfortaa;
+
+}
+
+
+
+  
+
+.person i {
+    margin-left: 10px;
+    height: 20px;
+    background-color: #f7fafc;
+}
+
+.person p {
+    margin-left: 10px;
+    font-weight: bold;
+    font-family: 'Comfortaa';
+
+}
+
+.phone {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #1D3A4D;
+    margin-left: 5%;
+
+}
+
+
+.phone i {
+    margin-left: 10px;
+    height: 20px;
+    background-color: #f7fafc;
+
+}
+
+.phone p {
+    margin-left: 10px;
+    font-weight: bold;
+    font-family: Comfortaa;
+
+}
+
+.Btn {
+    width: 15%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #f7fafc;
+    margin-left: 68%;
+    margin-bottom: 10px;
+
+
+}
+
+
+
+.searchButton2 {
+
+    border: 1px solid #f7fafc;
+    background: #f7fafc;
+    text-align: center;
+    color: #1D3A4D;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
+    height: 100%;
+    margin-top: 8px;
+    margin-left: 15px;
+}

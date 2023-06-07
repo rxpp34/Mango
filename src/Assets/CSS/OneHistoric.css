@@ -1,0 +1,30 @@
+#Call
+{
+    border : none ;
+    border-top: 1px solid #1D3A4D;
+    border-bottom: 1px solid #1D3A4D;
+    width: 90%;
+    height: 100px ; 
+    font-family: "Comfortaa";
+    display: flex;
+    color :#1D3A4D;
+    font-size: 1em;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 3%;
+}
+.CallButton
+{
+    border: 1px solid #1D3A4D;
+    background: #1D3A4D;
+    text-align: center;
+    color: white;
+    border-radius:999px ;
+    cursor: pointer;
+    font-size: 20px;
+    width: 35px;
+    height: 35px ;
+    margin: auto ;
+    
+  
+}

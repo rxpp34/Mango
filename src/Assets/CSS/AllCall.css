@@ -1,0 +1,10 @@
+#Main-div-AllCAll
+{
+    width: 100%;
+    height: 650px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+
+}

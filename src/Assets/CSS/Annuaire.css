@@ -1,0 +1,88 @@
+#Main-div-Annuaire
+{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#Historic
+{
+    width: 40%;
+    height: 100%;
+
+}
+
+#Historic h4 
+{
+    font-family: 'Comfortaa';
+    font-size: 1.6em;
+    color: #1D3A4D;
+    font-weight: bold;
+    margin-left: 3%;
+}
+
+#Annuaire 
+{
+    width: 60%;
+    height: 100%;
+
+}
+
+#search {
+    width: 90%;
+    margin-top: 30px;
+    border-radius: 15px;
+    height: 50px;
+    margin-left: 5%;
+    background-color: #1D3A4D;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#search i {
+    color: white;
+    size: 1.3em;
+    margin-right: 2%;
+}
+
+#searchTerm {
+    width: 90%;
+    border: 3px solid #1D3A4D;
+    border-radius: 10px;
+    border-right: none;
+    font-size: 1.0em;
+    padding-left: 3%;
+    outline: none;
+    color: white;
+    background-color: #1D3A4D;
+    font-family: 'Comfortaa';
+    height: 80%;
+}
+
+
+
+#searchTerm:focus {
+    color: #f2f2f2;
+}
+
+#searchTerm::placeholder {
+    color: #f2f2f2;
+}
+
+#xdf-4456
+{
+    width: 96%;
+    margin-left: 3%;
+    margin-top: 30;
+    height: 85%;
+    overflow-y: auto;
+
+}
+
+#xdf-4456::-webkit-scrollbar {
+    width: 18px; /* Largeur de la barre de défilement */
+  }

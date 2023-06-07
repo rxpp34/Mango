@@ -1,0 +1,23 @@
+#OneCall-div
+{
+    width: 90%;
+    height: 7%;
+    background-color: #1D3A4D;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color :white ; 
+    font-family: 'Comfortaa';
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+
+#OneCall-div img {
+
+    width: 80px;
+    height: 80px;
+
+} 
+
