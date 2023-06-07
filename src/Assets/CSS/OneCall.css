@@ -2,16 +2,19 @@
 {
     width: 90%;
     height: 7%;
-    background-color: #1D3A4D;
+    background-color: white;
     margin-bottom: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
-    color :white ; 
+    color :#1D3A4D ; 
     font-family: 'Comfortaa';
     font-weight: bold;
     border-radius: 5px;
+    border : 2px solid #1D3A4D ; 
+    border-radius: 5px;
 }
+
 
 
 #OneCall-div img {

@@ -11,7 +11,7 @@ function AllCall (props) {
             {
                 props.AllCall.map((item) => {
                     return (<OneCall src={item.src} answerdate={item.answerdate} billsec={item.billsec} 
-                        channel={item.channel} dstchannel={item.dstchannel}/>)
+                        channel={item.channel} dstchannel={item.dstchannel} dst={item.dst} lastdata={item.lastdata}/>)
                 })
             }
         </div>

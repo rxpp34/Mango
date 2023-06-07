@@ -1,40 +1,106 @@
 import "../Assets/CSS/OneCall.css"
-import fleche from "../Assets/Images/fleche.png"
+import { useState,useEffect } from "react"
 
 function OneCall(props) {
+    const [dest,setDest]=useState("")
+    const [_channel,setChannel]=useState("")
+    const [time,setTime]=useState("")
+
+    useEffect(() => {
+        if(props.dstchannel.includes("203"))
+        {
+            setDest('Adel')
+        }
+        else if(props.dstchannel.includes('204'))
+        {
+            setDest('Nadjib')
+        }
+        else if(props.dstchannel.includes('205'))
+        {
+            setDest("Thibaut")
+        }
+        else
+        {
+            setDest("Appel Manqué")
+        }
+
+        if(props.channel.includes("203"))
+        {
+            setChannel('Adel')
+        }
+        else if(props.channel.includes('204'))
+        {
+            setChannel('Nadjib')
+        }
+        else if(props.channel.includes('205'))
+        {
+            setChannel("Thibaut")
+        }
+        else
+        {
+            setChannel(props.channel)
+        }
+        
+        setTime(Math.floor(props.billsec / 60)+"m"+props.billsec % 60+"s")
+
+    }, [])
+
+    
     return (
         <div id="OneCall-div">
-            { props.src==="33411932752" ? 
-                <i style={{marginLeft : '2%'}}class="fa-solid fa-arrow-trend-up"></i>
-                :
-                <i style={{marginLeft : '2%'}} class="fa-solid fa-arrow-trend-up fa-rotate-180"></i>
-            }
-
-
-            {
-                props.src==="33411932752" ? 
-                <p style={{marginLeft : '2%',marginRight :'2%'}}> {props.dstchannel} </p> 
-
-                :
-
-                <p style={{marginLeft : '2%',marginRight :'2%'}}>  {props.dstchannel.split("/")[1]}</p> 
-            }
-                     
             
-            <p> ------------------ </p>
-            <i class="fa-regular fa-angles-right" style={{color: '#ffffff'}}></i>
-            {
+            { // ICONE SELON LE TYPE D'APPEL
                 props.src==="33411932752" ? 
-                <p style={{marginLeft : '2%',marginRight :'2%'}}> {props.dstchannel} </p> 
-
+                <div style={{width :'3%',textAlign :'center'}}><i style={{fontSize :'1.6em'}}class="fa-solid fa-arrow-trend-up"></i></div>
+                : 
+                props.lastdata==="records/SOWILO-TECH-OQP" ? 
+                <div style={{width :'3%',textAlign :'center'}}><i class="fa-solid fa-square-xmark" style={{color: '#ff0000',marginLeft : '2%',fontSize :'1.6em'}}></i>   </div>      
+                : 
+                props.lastdata==="records/SOWILO-CLOSED" ? 
+                <div style={{width :'3%',textAlign :'center'}}><i class="fa-solid fa-square-xmark" style={{color: '#ff0000',marginLeft : '2%',fontSize :'1.6em'}}></i> </div>
                 :
-
-                <p style={{marginLeft : '2%',marginRight :'2%'}}>  {props.src}</p> 
+                <div style={{width :'3%',textAlign :'center'}}><i style={{marginLeft : '2%',fontSize :'1.6em'}}class="fa-solid fa-arrow-trend-down"></i></div>
             }
-            <p style={{marginLeft : '15%'}}> {props.answerdate} </p>
-            <p style={{marginLeft : '15%'}}> {props.billsec}</p>
 
+
+            { //source de l'appel
+                props.src==="33411932752" ? 
+                <div style={{width :'10%',marginLeft:'2%',textAlign:'center'}}><p style={{marginLeft : '2%',marginRight :'7.7%'}}> {_channel}</p></div>                
+                : 
+                <div style={{width :'10%',marginLeft:'2%',textAlign:'center'}}><p style={{marginLeft : '2%',marginRight :'2%'}}> {props.src}</p>    </div>         
+            }
+
+            {// Sens de l'appel
+                props.src==="33411932752" ? 
+                <div style={{width :'12%',marginLeft:'2%',textAlign:'center'}}><p> -------------&#187;&#187;&#187;   </p></div>
+                :
+                <div style={{width :'12%',marginLeft:'2%',textAlign:'center'}}><p> &#171;&#171;&#171;-------------</p></div>
+
+
+            }
+            
+
+            { // destination de l'appel
+                props.src==="33411932752" ? 
+                <div style={{width :'12%',marginLeft:'2%',textAlign:'center'}}><p style={{marginLeft : '2%',marginRight :'2%'}}> {props.dst}</p></div>                
+                : 
+                <div style={{width :'12%',marginLeft:'2%',textAlign:'center'}}><p style={{marginLeft : '2%',marginRight :'2%'}}> {dest}</p></div> 
+            }
+
+            { // dateTime de l'appel
+                props.lastdata==="records/SOWILO-TECH-OQP" ||  props.lastdata==="records/SOWILO-CLOSED" ?
+                <div style={{width :'15%',marginLeft:'2%',textAlign:'center'}}><p style={{marginLeft : ''}}> {props.answerdate} </p></div>
+                :
+                props.src==="33411932752" ? 
+                <div style={{width :'15%',marginLeft:'2%',textAlign:'center'}}><p style={{marginLeft : ''}}> {props.answerdate} </p></div>
+                :
+                <div style={{width :'15%',marginLeft:'2%',textAlign:'center'}}><p style={{}}> {props.answerdate} </p></div>
+
+            }
+            
+            <p style={{marginLeft : '15%'}}> {time}</p> 
             <i style={{marginLeft : '10%',cursor :'pointer'}} class='fas fa-phone'></i>
+  
         </div>
     )
 }
