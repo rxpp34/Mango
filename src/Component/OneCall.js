@@ -19,6 +19,10 @@ function OneCall(props) {
         {
             setDest("Thibaut")
         }
+        else if(props.dstchannel.includes("299"))
+        {
+            setDest("Appel Manqué")
+        }
         else
         {
             setDest("Appel Manqué")
@@ -59,7 +63,11 @@ function OneCall(props) {
                 props.lastdata==="records/SOWILO-CLOSED" ? 
                 <div style={{width :'3%',textAlign :'center'}}><i class="fa-solid fa-square-xmark" style={{color: '#ff0000',marginLeft : '2%',fontSize :'1.6em'}}></i> </div>
                 :
-                <div style={{width :'3%',textAlign :'center'}}><i style={{marginLeft : '2%',fontSize :'1.6em'}}class="fa-solid fa-arrow-trend-down"></i></div>
+                props.dstchannel.includes("Local/299")  ? 
+                <div style={{width :'3%',textAlign :'center'}}><i class="fa-solid fa-square-xmark" style={{color: '#ff0000',marginLeft : '2%',fontSize :'1.6em'}}></i> </div>
+
+                :
+                <div style={{width :'3%',textAlign :'center'}}><i style={{marginLeft : '2%',fontSize :'1.6em',color:"#ODE732"}}class="fa-solid fa-arrow-trend-down"></i></div>
             }
 
 

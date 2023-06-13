@@ -15,7 +15,7 @@ body
 
 #AppLogo
 {
-    margin-top: 50px;
+    margin-top: 20px;
 }
 
 #DivButtonSwitcher
@@ -33,12 +33,12 @@ body
 #Display
 {
     width: 75%;
-    height: 650px;
+    height: auto;
 
     border-radius: 7px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 10px;
     box-shadow: rgb(38, 57, 77) 0px 10px 30px -2px;
 }
