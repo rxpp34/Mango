@@ -36,7 +36,7 @@ function Annuaire (props) {
                                 return item
                             }
                         }).map((item) => {
-                            return (<Contact Name={item.Name} Phone={item.Phone} key={item.ID}/>)
+                            return (<Contact Name={item.Name} Phone={item.Phone} key={item.ID} ID={item.ID}/>)
                         })
                    }
                 </div>

@@ -41,21 +41,21 @@ function App() {
     useEffect(() => {
         axios({
             method : "GET",
-            url : "http://localhost:8080/GetHistoricall"
+            url : "http://192.168.5.133:8080/GetHistoricall"
         }).then((resp) => {
             setHistoric(resp.data)
         })
 
         axios({
             method : "GET",
-            url :"http://localhost:8080/GetAllContact"
+            url :"http://192.168.5.133:8080/GetAllContact"
         }).then((resp) => {
             setAllContact(resp.data)
         })
 
         axios({
           method : "GET",
-          url :"http://localhost:8080/GetAllCall"
+          url :"http://192.168.5.133:8080/GetAllCall"
       }).then((resp) => {
           setAllCalls(resp.data)
       })

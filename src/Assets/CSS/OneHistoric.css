@@ -13,6 +13,10 @@
     justify-content: flex-start;
     margin-left: 3%;
 }
+p
+{
+    font-weight: bold;
+}
 .CallButton
 {
     border: 1px solid #1D3A4D;

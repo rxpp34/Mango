@@ -1,10 +1,25 @@
 import "../Assets/CSS/OneCall.css"
 import { useState,useEffect } from "react"
+import axios from "axios"
 
 function OneCall(props) {
     const [dest,setDest]=useState("")
     const [_channel,setChannel]=useState("")
     const [time,setTime]=useState("")
+
+    function Call() 
+    {
+        try 
+        {   
+            axios.post("http://192.168.5.133:8080/PerformCall/202/" + props.src + "/" + "inconnue")
+
+        }
+        catch(e)
+        {   
+            console.log(e)
+        }
+        ;
+    }
 
     useEffect(() => {
         if(props.dstchannel.includes("203"))
@@ -107,7 +122,10 @@ function OneCall(props) {
             }
             
             <p style={{marginLeft : '15%'}}> {time}</p> 
-            <i style={{marginLeft : '10%',cursor :'pointer'}} class='fas fa-phone'></i>
+            {
+                props.src!=="33411932752" ? <i style={{marginLeft : '10%',cursor :'pointer'}} class='fas fa-phone' onClick={() =>{Call()}}></i> : <i style={{marginLeft : '10%',color :'white'}} class='fas fa-phone'></i>
+            }
+            
   
         </div>
     )
