@@ -1,0 +1,57 @@
+#EditComponent
+{
+    width: 100%;
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#EditComponent i 
+{
+    font-size: 2.8em;
+    text-align: center;
+    margin-top: 50px;
+}
+
+#EditComponent p
+{
+    font-size: 1.8em;
+    text-align: center;
+    margin-top: 20px;
+    color: #253b5f;
+    font-family: Comfortaa;
+    font-weight: bold;
+}
+
+#EditComponent input 
+{
+    width: 40%;
+    border: 3px solid #253b5f;
+    height: 40px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-family: Comfortaa;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.4em;
+    margin-bottom: 30px;
+    color : #1a2980 ; 
+    border-radius: 5px;
+}
+
+#EditComponent button
+{
+    width: 20%; 
+    background-color: #1D3A4D;
+    font-family: Comfortaa;
+    color : white ; 
+    font-weight: bold;
+    font-size: 1.4em;
+    height: 45px ;
+    border: none;
+    margin-bottom: 25px;
+    cursor: pointer;
+    border-radius: 7px;
+}

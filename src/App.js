@@ -2,16 +2,33 @@ import React from "react";
 import axios from "axios" ; 
 import './Assets/CSS/App.css'
 import { useState,useEffect } from "react";
-import Logo from "./Assets/Images/logo.png"
+import Logo from "./Assets/Images/logo.jpg"
 import Annuaire from "./Component/Annuaire";
 import AllCall from "./Component/AllCall";
+import { useNavigate } from "react-router-dom";
+import AddContact from "./Component/AddContact";
 
 function App() {
-  const [Switcher,setSwitcher] =useState(false)
+
+  const Extensions=[201,202,203,204,205,301,302,303,101,102,103]
+  const navigate=useNavigate()
+
+  if(!localStorage["exten"])
+  {
+      navigate("/Auth")
+  }
+  else if(!Extensions.includes(parseInt(localStorage["exten"])))
+  {
+    navigate("/Auth")
+  }
+
+
+  const [Switcher,setSwitcher] =useState(0)
+
   const CSSButtonDisabled = {
     fontFamily: 'Comfortaa',
     fontSize: '1.6em',
-    width: '40%',
+    width: '25%',
     backgroundColor: '#f2f2f2',
     border: 'none',
     color : '#1D3A4D' ,
@@ -23,7 +40,7 @@ function App() {
   const CSSButtonEnabled = {
     fontFamily: 'Comfortaa',
     fontSize: '1.6em',
-    width: '40%',
+    width: '25%',
     backgroundColor: '#1D3A4D',
     border: 'none',
     color : 'white' ,
@@ -41,7 +58,7 @@ function App() {
     useEffect(() => {
         axios({
             method : "GET",
-            url : "http://192.168.5.133:8080/GetHistoricall"
+            url : "http://192.168.5.133:8080/GetHistoricall/"+localStorage['exten']
         }).then((resp) => {
             setHistoric(resp.data)
         })
@@ -77,15 +94,16 @@ function App() {
 
   return (
     <div id="App">
-      <img src={Logo} id="AppLogo"/>
+      <img src={Logo} id="AppLogo" style={{width :'350px',borderRadius :'7px',border :'3px solid #1D3A4D'}}/>
       <div id="DivButtonSwitcher">
-        <button style={Switcher ? CSSButtonDisabled : CSSButtonEnabled} onClick={() => {SwitchDisplay()}}> Annuaire </button>
-        <button style={Switcher ? CSSButtonEnabled : CSSButtonDisabled} onClick={() => {SwitchDisplay()}}> Tous les appels </button>
+        <button style={Switcher===0 ? CSSButtonEnabled : CSSButtonDisabled} onClick={() => {setSwitcher(0)}}> Annuaire </button>
+        <button style={Switcher===1 ? CSSButtonEnabled : CSSButtonDisabled} onClick={() => {setSwitcher(1)}}> Tous les appels </button>
+        <button style={Switcher===2 ? CSSButtonEnabled : CSSButtonDisabled} onClick={() => {setSwitcher(2)}}> + Ajouter un contact </button>
       </div>
 
       <div id="Display">
         {
-          !Switcher ?  <Annuaire historique={historic} Annuaire={AllContact}/> : <AllCall AllCall={AllCalls}/>
+          Switcher===0 ?  <Annuaire historique={historic} Annuaire={AllContact}/> : Switcher===1 ?  <AllCall AllCall={AllCalls}/> : Switcher===2  ? <AddContact/> : <p> null</p>
         }
 
       </div>

@@ -8,7 +8,7 @@ function OneHistorical (props) {
     {
         try 
         {   
-            axios.post("http://192.168.5.133:8080/PerformCall/202/" + props.Phone + "/" + props.Name)
+            axios.post("http://192.168.5.133:8080/PerformCall/"+localStorage["exten"]+'/' + props.Phone + "/" + props.Name)
 
         }
         catch(e)

@@ -1,5 +1,7 @@
 import "../Assets/CSS/Contact.css"
 import axios from "axios"
+import { confirmAlert } from 'react-confirm-alert'; // Import
+import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 function Contact (props) 
 {
@@ -8,7 +10,7 @@ function Contact (props)
     {
         try 
         {   
-            axios.post("http://192.168.5.133:8080/PerformCall/202/" + props.Phone + "/" + props.Name)
+            axios.post("http://192.168.5.133:8080/PerformCall/"+localStorage["exten"]+'/' + props.Phone + "/" + props.Name)
 
         }
         catch(e)
@@ -24,9 +26,34 @@ function Contact (props)
         axios({
             method :'post',
             url :"http://192.168.5.133:8080/DeleteContact/"+props.ID
+        }).then((resp) => {
+            if(resp.data==="OK")
+            {
+                axios.post("http://192.168.5.133:8080/RefreshXML").then((resp) => {if(resp.data==="OK") {window.location.reload(false);}})
+            }
         })
-        window.location.reload(false);
+        
     }
+
+    function ConfirmDeleteContact() 
+    {
+        confirmAlert({
+            title: 'Confirmation',
+            message: 'Êtes-vous sure de vouloir supprimer ce contact ?',
+            buttons: [
+              {
+                label: 'Absolument',
+                onClick: () => DeleteContact() 
+              },
+              {
+                label: 'Pas du tout',
+                
+              }
+            ]
+          });
+    }
+
+
 
     return (
         <div id="Contact"> 
@@ -46,7 +73,7 @@ function Contact (props)
                 <i className='fas fa-edit'> </i>
             </button>
     
-            <button type='button' className='searchButton2' onClick={() => (DeleteContact())}>
+            <button type='button' className='searchButton2' onClick={() => (ConfirmDeleteContact())}>
                 <i className='fas fa-times'></i>
             </button>
 
