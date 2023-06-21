@@ -16,11 +16,14 @@ function AddContact()
         }).then((resp) => {
             if(resp.data==="OK")
             {
-                axios.post("http://192.168.5.133:8080/RefreshXML").then((resp) => {if(resp.data==="OK") {window.location.reload(false);}})
-            }
+                axios({
+                    method :'post',
+                    url :'http://192.168.5.133:8080/RefreshXML'
+                })            }
         })
-    }
 
+	 window.location.reload()
+    }
     return(
         <div id="EditComponent">
             <i class="fa-solid fa-address-book" style={{color :"#253b5f"}}></i>

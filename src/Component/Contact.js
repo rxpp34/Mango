@@ -1,10 +1,25 @@
 import "../Assets/CSS/Contact.css"
 import axios from "axios"
+import { useState } from "react";
 import { confirmAlert } from 'react-confirm-alert'; // Import
 import 'react-confirm-alert/src/react-confirm-alert.css'; 
 
 function Contact (props) 
 {
+
+    const [SwitchEditMode,setSwitchEditMode]=useState(false)
+    const [InputStyle,setInputStyle]=useState({
+        marginLeft: '10px',
+        fontWeight: 'bold',
+        fontFamily: 'Comfortaa',
+        border:'none' ,
+        color : '#1D3A4D' ,
+        backgroundColor: '#F7FAFC',
+    })
+
+    const [DisabledInput,setDisabledInput]=useState(true)
+    const [Phone,setPhone]=useState(props.Phone)
+    const [Name,setName]=useState(props.Name)
 
     function Call() 
     {
@@ -29,10 +44,52 @@ function Contact (props)
         }).then((resp) => {
             if(resp.data==="OK")
             {
-                axios.post("http://192.168.5.133:8080/RefreshXML").then((resp) => {if(resp.data==="OK") {window.location.reload(false);}})
+                axios.post("http://192.168.5.133:8080/RefreshXML").then((resp) => {
+            })
             }
         })
-        
+        window.location.reload();
+    }
+
+    function SwitchMode() 
+    {
+        setSwitchEditMode(true)
+        setDisabledInput(false)
+        setInputStyle({
+            marginLeft: '10px',
+            fontWeight: 'bold',
+            fontFamily: 'Comfortaa',
+            border:'2px solid #1D3A4D' ,
+            borderRadius :'7px',
+            color : '#1D3A4D' ,
+            backgroundColor: '#F7FAFC',
+            padding :'5px'
+        })
+    }
+
+    function EditContact() 
+    {
+        setSwitchEditMode(false)
+        setDisabledInput(true)
+        setInputStyle({
+            marginLeft: '10px',
+            fontWeight: 'bold',
+            fontFamily: 'Comfortaa',
+            border:'none' ,
+            color : '#1D3A4D' ,
+            backgroundColor: '#F7FAFC',
+        })
+
+        axios({
+            method :'POST',
+            url :'http://192.168.5.133:8080/EditContact/'+props.ID+"/"+Name+"/"+Phone
+        }).then((resp) => {
+            if(resp.data==="OK")
+            {
+                window.location.reload()
+            }
+        })
+
     }
 
     function ConfirmDeleteContact() 
@@ -56,32 +113,31 @@ function Contact (props)
 
 
     return (
+
         <div id="Contact"> 
-          
-        <div className='person'> 
-            <i className='fa fa-user'></i>
-            <p> {props.Name}</p>
-        </div>
-   
-        <div className='phone'>
-            <i className='fa fa-phone'></i>
-            <p>  {props.Phone} </p>
-        </div>
-   
-        <div className='Btn'>
-            <button type='button' className='searchButton2' >
-                <i className='fas fa-edit'> </i>
-            </button>
+            <div className='person'> 
+                <i className='fa fa-user'></i>
+                <input value={Name} style={InputStyle} disabled={DisabledInput} onChange={(e) =>{setName(e.target.value)}}/> 
+            </div>
     
-            <button type='button' className='searchButton2' onClick={() => (ConfirmDeleteContact())}>
-                <i className='fas fa-times'></i>
-            </button>
+            <div className='phone'>
+                <i className='fa fa-phone'></i>
+                <input value={Phone} style={InputStyle} disabled={DisabledInput} onChange={(e) =>{setPhone(e.target.value)}}/> 
+            </div>
+    
+            <div className='Btn'>
+                <button type='button' className='searchButton2' >
+                    { SwitchEditMode ? <i class="fa-solid fa-check" onClick={() =>{EditContact()}}></i> : <i className='fas fa-edit' onClick={() => {SwitchMode()}}> </i>}
+                </button>
+        
+                <button type='button' className='searchButton2' onClick={() => (ConfirmDeleteContact())}>
+                    <i className='fas fa-times'></i>
+                </button>
 
-            <button type='button' className='searchButton2' onClick={() => (Call())}>
-                <i className='fas fa-phone'></i>
-            </button>
-        </div>
-
+                <button type='button' className='searchButton2' onClick={() => (Call())}>
+                    <i className='fas fa-phone'></i>
+                </button>
+            </div>
         </div>
     )
 }

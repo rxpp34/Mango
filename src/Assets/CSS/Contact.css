@@ -37,12 +37,7 @@
     background-color: #f7fafc;
 }
 
-.person p {
-    margin-left: 10px;
-    font-weight: bold;
-    font-family: 'Comfortaa';
 
-}
 
 .phone {
     width: 100%;
@@ -51,6 +46,7 @@
     align-items: center;
     color: #1D3A4D;
     margin-left: 5%;
+    margin-top: 20px;
 
 }
 
@@ -62,12 +58,7 @@
 
 }
 
-.phone p {
-    margin-left: 10px;
-    font-weight: bold;
-    font-family: Comfortaa;
 
-}
 
 .Btn {
     width: 15%;
