@@ -6,16 +6,10 @@ function OneHistorical (props) {
 
     function Call() 
     {
-        try 
-        {   
-            axios.post("http://192.168.5.133:8080/PerformCall/"+localStorage["exten"]+'/' + props.Phone + "/" + props.Name)
-
-        }
-        catch(e)
-        {   
-            console.log(e)
-        }
-        window.location.reload(false);
+      
+        axios.post("http://192.168.5.133:8080/PerformCall/"+localStorage["exten"]+'/' + props.Phone + "/" + props.Name)
+        setTimeout(1000,window.location.reload())
+        
     }
 
     return ( 

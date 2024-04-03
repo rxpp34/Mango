@@ -8,7 +8,7 @@ import Logo from "./Assets/Images/logo.png"
 function Auth () 
 {
     const [exten,setExten]=useState("")
-    const Extensions=[201,202,203,204,205,301,302,303,101,102,103]
+    const Extensions=[201,202,203,204,205,301,302,303,101,102,103,666]
     const [ErrorMode,setErrorMode]=useState(false)
     const navigate=useNavigate()
 
@@ -25,10 +25,16 @@ function Auth ()
         }
     }
 
+    const handleKeyPress = (event) => {
+        if (event.key === 'Enter') {
+          Open() ;
+        }
+      };
+
     return (
         <div id='LoginForm'> 
             <img src={Logo}/>
-            <input placeholder="Ton extension..." value={exten} onChange={(e) =>{setExten(e.target.value)}}/>
+            <input placeholder="Ton extension..." value={exten} onChange={(e) =>{setExten(e.target.value)}} onKeyDown={handleKeyPress} />
             {
                 ErrorMode ? <p style={{color : 'red' , fontWeight :'bold'}}> Votre extension n'existe pas.</p> : <p style={{color : 'white' , fontWeight :'bold'}}> Votre extension n'existe pas.</p>
             }
